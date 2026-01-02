@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Sistema Farmácia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .menu {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .menu a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+        .logout-form {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Sistema de Farmácia</h1>
+        <p>Usuário logado: <strong th:text="${#authentication?.name}">usuário</strong></p>
+        
+        <div class="menu">
+            <a href="/h2-console" target="_blank">Banco de Dados H2</a>
+        </div>
+        
+        <div class="menu">
+            <h3>Gestão:</h3>
+            <a href="/api/medicamentos">API Medicamentos</a>
+            <a href="/api/categorias">API Categorias</a>
+            <a href="/api/alertas">API Alertas</a>
+        </div>
+        
+        <div class="logout-form">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">Sair</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
