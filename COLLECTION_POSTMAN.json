@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "farmacia-api-collection",
+		"name": "API Farmacia - Coleção Completa",
+		"description": "Coleção completa de requisições para demonstração da API Farmacia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "farmacia",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "admin123",
+				"type": "string"
+			}
+		]
+	},
+	"item": [
+		{
+			"name": "1. Categorias",
+			"item": [
+				{
+					"name": "Criar Categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Analgésicos\",\n  \"descricao\": \"Medicamentos para alívio de dores\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/categorias",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "categorias"]
+						}
+					}
+				},
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/categorias",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "categorias"]
+						}
+					}
+				},
+				{
+					"name": "Buscar Categoria por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/categorias/{{categoriaId}}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "categorias", "{{categoriaId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Medicamentos",
+			"item": [
+				{
+					"name": "Criar Medicamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Paracetamol 500mg\",\n  \"descricao\": \"Analgésico e antitérmico\",\n  \"preco\": 15.90,\n  \"quantidade\": 50,\n  \"dataValidade\": \"2025-12-31\",\n  \"categoriaId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/medicamentos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "medicamentos"]
+						}
+					}
+				},
+				{
+					"name": "Listar Medicamentos",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/medicamentos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "medicamentos"]
+						}
+					}
+				},
+				{
+					"name": "Buscar Medicamento por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/medicamentos/{{medicamentoId}}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "medicamentos", "{{medicamentoId}}"]
+						}
+					}
+				},
+				{
+					"name": "Alterar Status Medicamento",
+					"request": {
+						"method": "PATCH",
+						"url": {
+							"raw": "http://localhost:8080/api/medicamentos/{{medicamentoId}}/status?status=INATIVO",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "medicamentos", "{{medicamentoId}}", "status"],
+							"query": [
+								{
+									"key": "status",
+									"value": "INATIVO"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Clientes",
+			"item": [
+				{
+					"name": "Criar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva\",\n  \"cpf\": \"12345678909\",\n  \"email\": \"joao.silva@email.com\",\n  \"dataNascimento\": \"1990-05-15\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "clientes"]
+						}
+					}
+				},
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "clientes"]
+						}
+					}
+				},
+				{
+					"name": "Buscar Cliente por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/{{clienteId}}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "clientes", "{{clienteId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Estoque",
+			"item": [
+				{
+					"name": "Registrar Entrada",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"medicamentoId\": 1,\n  \"quantidade\": 20,\n  \"observacao\": \"Reposição de estoque\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estoque/entrada",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "estoque", "entrada"]
+						}
+					}
+				},
+				{
+					"name": "Consultar Estoque Atual",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/estoque/{{medicamentoId}}/atual",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "estoque", "{{medicamentoId}}", "atual"]
+						}
+					}
+				},
+				{
+					"name": "Consultar Movimentações",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/estoque/{{medicamentoId}}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "estoque", "{{medicamentoId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Vendas",
+			"item": [
+				{
+					"name": "Registrar Venda",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clienteId\": 1,\n  \"itens\": [\n    {\n      \"medicamentoId\": 1,\n      \"quantidade\": 2,\n      \"precoUnitario\": 15.90\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "vendas"]
+						}
+					}
+				},
+				{
+					"name": "Listar Vendas",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/vendas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "vendas"]
+						}
+					}
+				},
+				{
+					"name": "Vendas por Cliente",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/vendas/cliente/{{clienteId}}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "vendas", "cliente", "{{clienteId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Alertas",
+			"item": [
+				{
+					"name": "Alertas Estoque Baixo",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/alertas/estoque-baixo",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "alertas", "estoque-baixo"]
+						}
+					}
+				},
+				{
+					"name": "Alertas Validade Próxima",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/alertas/validade-proxima",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "alertas", "validade-proxima"]
+						}
+					}
+				},
+				{
+					"name": "Todos os Alertas",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/alertas/todos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "alertas", "todos"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "categoriaId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "medicamentoId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "clienteId",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
+
